@@ -1,4 +1,4 @@
-I have a lot of problems trying to get the graph titles. I tried looping with a function but somehow the parameters were not passes correctly. I opted for doing it manually, but hard coding is not my choice.
+I have a lot of problems trying to get the graph titles. I tried looping with a function but somehow the parameters were not passed correctly. I opted for doing it manually, but hard coding is not my choice.
 The hover/mouseover I implemented as css, so also not ideal. With more time I can probably make it work as it should.
 
 COLLABORATION: I've got advice from Santhanakrishnan Ramani. The other sources liste below are also commented in the code:
