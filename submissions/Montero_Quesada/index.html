@@ -49,15 +49,12 @@
         .point:hover {
             fill: brown;
         }
-        .chart text {/*from https://bost.ocks.org/mike/bar/2/*/
-            fill: white;
-            font: 10px sans-serif;
-            text-anchor: end;
-}
+        
     </style>
     
     <script type="text/javascript">
         // Put your part one code here ***********************
+       
         var filePath = ['./data/anscombe_I.csv', './data/anscombe_II.csv','./data/anscombe_III.csv','./data/anscombe_IV.csv']; // List of data files
         
         var index = 0
@@ -71,7 +68,8 @@
                     $("#partOne").append("<p>data loaded correctly</p>");
                 else
                     $("#partOne").append("<p>data loaded incorrectly. Try using the debugger to help you find the bug!</p>");
-            }index++;
+            }
+            index++;
         }
         // Put your part two code here ***********************
         var w = 700; // Width of our visualization
@@ -260,16 +258,36 @@
     
    
     var index = 0;
-    while (index<4)
-    {
+    //while (index < 4)
+    //{
         var filenames = ["Anscombe_I", "Anscombe_II", "Anscombe_III", "Anscombe_IV"];
-//      console.log(filenames[0]);
-    //    var title = filenames[index];
-//       console.log(index);   
-    //function scatterplotSet(title,index){   
-        d3.csv(filePath[index], function(csvData) {
+        //console.log(filenames[0]);
+        //var title = filenames[index];
+        //console.log(index);   
+        //console.log(title); 
+     
+        d3.csv(filePath[0], function(csvData){
+                scatterplotSet(csvData,filenames[0],0);  
+            });
+        
+        d3.csv(filePath[1], function(csvData){
+                scatterplotSet(csvData,filenames[1],1);  
+            });
+        d3.csv(filePath[2], function(csvData){
+                scatterplotSet(csvData,filenames[2],2);  
+            });
+        d3.csv(filePath[3], function(csvData){
+                scatterplotSet(csvData,filenames[3],3);  
+            });
+              // Leave this to test your data uploading. All data uploading should be above this line
+         
+        
+            function scatterplotSet(dataset,filename,index) {
+                console.log(index);   
+                console.log(filenames[index]); 
+       // d3.csv(filePath[index], function(csvData) {
              
-            var data = csvData;
+            var data = dataset;
             var minY = d3.min(data, function(d) {
                     return parseFloat(d[xVal]);
                     });
@@ -299,7 +317,7 @@
                                     .attr('x', (w1 / 2))             
                                     .attr('y', margin)
                                    //.text('Anscombe_II');
-                                    .text(filenames[index]);
+                                    .text(filename);
                                
 
 	       // Build axes! (These are kind of annoying, actually...)
@@ -358,8 +376,9 @@
                 .attr("cy", function(d){return yScale(d[yVal]);})
                 .attr("r",3)
            
-        });// }
-         index++;
+       // });
+            //}
+         //index++;
     }     
         
         
